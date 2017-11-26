@@ -33,15 +33,15 @@ def validate_expected_fields_exist(full_filename, artist, album, title):
     if len(title) == 0:
         print('Warning: No title tag exists for %s' % full_filename)
 
-def check_for_starting_the_in_artist(dir_name, filename):
-    full_filename = os.path.join(dir_name, filename)
+def check_for_starting_the_in_artist(dirname, filename):
+    full_filename = dirname + "\\" + filename
     artist = get_artist(full_filename)
     if re.match("^The ", artist):
         new_artist = artist[4:] + " (The)"
         set_artist(full_filename, new_artist)
 
 def rename_file(dir_name, filename, file_extension):
-    full_filename = os.path.join(dir_name, filename)
+    full_filename = dir_name + "\\" + filename
     artist = get_artist(full_filename)
     album = get_album(full_filename)
     title = get_title(full_filename)
@@ -66,5 +66,5 @@ for dir_name, sub_dir_list, file_list in os.walk(sys.argv[1]):
             check_for_starting_the_in_artist(dir_name, filename)
             rename_file(dir_name, filename, file_extension)
         else:
-            full_filename = os.path.join(dir_name, filename)
+            full_filename = dir_name + "\\" + filename
             print('Warning: Found file with unexpected extension: %s' % full_filename)
