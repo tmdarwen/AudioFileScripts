@@ -3,7 +3,7 @@ import re
 import sys
 
 def filter_tag_value(value):
-    return value.translate(str.maketrans('~#%&*{}\:<>?/+|"', '________________'))
+    return value.translate(str.maketrans('"*\:<>?/|', '_________'))
 
 def get_artist(filename):
     command = "TaggerSharp \"" + filename + "\" --Artists"
