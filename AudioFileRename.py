@@ -56,7 +56,9 @@ def rename_file(dir_name, filename, file_extension):
 if len(sys.argv) != 2:
     print('Usage: %s directory' % sys.argv[0])
     print('   directory = Directory path containing audio files')
-    exit()
+    exit(2)
+
+exit_code = 0
 
 for dir_name, sub_dir_list, file_list in os.walk(sys.argv[1]):
     for filename in file_list:
@@ -68,3 +70,6 @@ for dir_name, sub_dir_list, file_list in os.walk(sys.argv[1]):
         else:
             full_filename = os.path.join(dir_name, filename)
             print('Warning: Found file with unexpected extension: %s' % full_filename)
+            exit_code = 1
+
+exit(exit_code)
