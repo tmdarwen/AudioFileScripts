@@ -54,8 +54,11 @@ def rename_file(dir_name, filename, file_extension):
     os.rename(full_filename, new_filename)
 
 if len(sys.argv) != 2:
-    print('Usage: %s directory' % sys.argv[0])
-    print('   directory = Directory path containing audio files')
+    print('\nUsage: %s directory' % sys.argv[0])
+    print('directory = Directory path containing audio files\n')
+    print('TaggerSharp MUST be in PATH or local directory')
+    print('TaggerSharp: https://sourceforge.net/projects/taggersharp/\n')
+    print('Exit codes: success=0, warnings=1, errors=2')
     exit(2)
 
 exit_code = 0
