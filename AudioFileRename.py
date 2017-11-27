@@ -62,7 +62,7 @@ for dir_name, sub_dir_list, file_list in os.walk(sys.argv[1]):
     for filename in file_list:
         name_no_extension, file_extension = os.path.splitext(filename)
         file_extension.rstrip()  # Remove the newline
-        if file_extension.lower() in ['.mp3', '.flac', '.m4a', '.wma']:
+        if re.match('.mp3|.flac|.m4a|.wma', file_extension, re.IGNORECASE):
             check_for_starting_the_in_artist(dir_name, filename)
             rename_file(dir_name, filename, file_extension)
         else:
